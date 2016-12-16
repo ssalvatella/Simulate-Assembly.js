@@ -1,0 +1,58 @@
+
+/* Add custom font */
+@font-face {
+    font-family: 'IBM-VGA8';
+    src: url('../fonts/px437_ibm_vga8-webfont.woff2') format('woff2'),
+    url('../fonts/px437_ibm_vga8-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: IBM-VGA8;
+    font-size: 17px;
+    color: white;
+    background-color: black;
+}
+
+
+.code {
+
+    margin-left: 30px;
+
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+.clickable {
+    cursor: pointer;
+    color: #0a0;
+}
+
+.not_clickable {
+    cursor: no-drop;
+    color: #b00;
+}
+
+.horizontal-style {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.horizontal-style li {
+    display: table-cell;
+    padding: 10px 10px;
+}
+.horizontal-style a {
+    display: block;
+    text-align: center;
+    margin: 0 5px;
+}
