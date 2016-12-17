@@ -25,13 +25,11 @@
 
     <div class="row">
         <div class="col-sm-7">
-            <div class="code" contenteditable="true">
-                MOV r1, #0 <br />
-                etiqueta_bucle: <br />
-                &nbsp; &nbsp;ADD r1, r1, #1 <br />
-                &nbsp; &nbsp;CMP r1, #20 <br />
-                &nbsp; &nbsp;BNE etiqueta_bucle <br />
-            </div>
+<div id="editor">MOV r1, #0
+etiqueta_bucle: <br />
+    ADD r1, r1, #1 <br />
+    CMP r1, #20 <br />
+BNE etiqueta_bucle <br /></div>
         </div>
         <!-- Table with Registers r0-r7 -->
         <div class ="col-sm-2">
@@ -185,7 +183,7 @@
     <!-- Scripts -->
     <script src="resources/plugins/jquery/jquery-3.1.1.min.js"></script>
     <script src="resources/plugins/bootstrap/js/bootstrap.js"></script>
-    <script src="resources/plugins/multithread/multithread.js"></script>
+    <script src="resources/plugins/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/interpreter-assembly.js"></script>
     <script src="./js/parser-assembly.js"></script>
     <script src="./js/simulate-assembly.js"></script>

@@ -1,4 +1,13 @@
-
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/terminal");
+editor.getSession().setMode("ace/mode/assembly_x86");
+editor.setShowPrintMargin(false);
+editor.resize();
+editor.setOptions({
+    fontFamily: "IBM-VGA8",
+    fontSize: "12pt",
+    maxLines: Infinity
+});
 
 $(".code").keydown(function(e)
 {
@@ -14,7 +23,8 @@ $(".code").keydown(function(e)
 });
 
 function getCode() {
-    var code = $(".code").html();
+    var editor = ace.edit("editor");
+    var code = editor.getValue();
     var regex = /<br\s*[\/]?>/gi;
     code = code.replace(regex, "\n");
     code.replace(/<(?:.|\n)*?>/gm, '');
