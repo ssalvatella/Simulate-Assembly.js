@@ -33,20 +33,30 @@ function InputStream(input) {
 function TokenStream(input) {
     var current = null;
     var keywords = " mov add ";
+    var registers = " r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 sp lr pc";
     return {
         next  : next,
         peek  : peek,
         eof   : eof,
         croak : input.croak
     };
+    function is_label(x) {
+        return /[a-z_]+:/i.test(x);
+    }
     function is_keyword(x) {
         return keywords.indexOf(" " + x + " ") >= 0;
+    }
+    function is_var(x) {
+        return registers.indexOf(" " + x + " ") >= 0;
+    }
+    function is_label_call(x) {
+        return /[a-z_]+/i.test(x);
     }
     function is_digit(ch) {
         return /[0-9]|#/i.test(ch);
     }
     function is_id_start(ch) {
-        return /[a-z_]/i.test(ch);
+        return /[a-z_:]/i.test(ch);
     }
     function is_id(ch) {
         return is_id_start(ch) || "?!-<>=0123456789".indexOf(ch) >= 0;
@@ -81,8 +91,18 @@ function TokenStream(input) {
     }
     function read_ident() {
         var id = read_while(is_id);
+        var type;
+        if (is_keyword(id)) {
+            type = "kw";
+        } else if (is_var(id)) {
+            type = "var";
+        } else if (is_label(id)){
+            type = "lab";
+        } else if (is_label_call(id)) {
+            type = "lab_call";
+        }
         return {
-            type  : is_keyword(id) ? "kw" : "var",
+            type  : type,
             value : id
         };
     }
@@ -211,7 +231,7 @@ function parse(input) {
     function parse_atom() {
         return maybe_call(function(){
             var tok = input.next();
-            if (tok.type == "punc" || tok.type == "kw" || tok.type == "var" || tok.type == "num" || tok.type == "str")
+            if (tok.type == "punc" || tok.type == "kw" || tok.type == "var" || tok.type == "num" || tok.type == "str" || tok.type == "lab" || tok.type == "lab_call")
                 return tok;
             unexpected();
         });

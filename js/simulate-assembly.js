@@ -1,4 +1,5 @@
 
+
 $(".code").keydown(function(e)
 {
     e = e || window.event;
@@ -8,8 +9,6 @@ $(".code").keydown(function(e)
         e.preventDefault();
         document.execCommand('styleWithCSS',true,null);
         document.execCommand('indent',true,null);
-        var ast = parse(TokenStream(InputStream(getCode())));
-        interpreter(ast);
     }
 
 });

@@ -22,159 +22,170 @@
             <li>[ <span><i class="fa fa-stop"></i></span> ]</li>
         </ul>
     </div>
+
     <div class="row">
-        <div class="col-sm-8">
-            <div class="code" contenteditable="true">MOV r1, #4</div>
-        </div>
-        <div class="col-sm-4">
-            <div class="row">
-                <div class ="col-sm-6">
-                    <table border="1">
-                        <tr><th>Register</th><th>Value</th></tr>
-                        <tr>
-                            <td>
-                                R0
-                            </td>
-                            <td id="r0">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R1
-                            </td>
-                            <td id="r1">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R2
-                            </td>
-                            <td id="r2">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R3
-                            </td>
-                            <td id="r3">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R4
-                            </td>
-                            <td id="r4">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R5
-                            </td>
-                            <td id="r5">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R6
-                            </td>
-                            <td id="r6">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R7
-                            </td>
-                            <td id="r7">
-                                0x00f01205
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class ="col-sm-6">
-                    <table border="1">
-                        <tr><th>Register</th><th>Value</th></tr>
-                        <tr>
-                            <td>
-                                R8
-                            </td>
-                            <td id="r8">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R9
-                            </td>
-                            <td id="r9">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R10
-                            </td>
-                            <td id="r10">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R11
-                            </td>
-                            <td id="r11">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                R12
-                            </td>
-                            <td id="r12">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                SP
-                            </td>
-                            <td id="sp">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                LR
-                            </td>
-                            <td id="lr">
-                                0x00f01205
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                PC
-                            </td>
-                            <td id="pc">
-                                0x00f01205
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
+        <div class="col-sm-7">
+            <div class="code" contenteditable="true">
+                MOV r1, #0 <br />
+                etiqueta_bucle: <br />
+                &nbsp; &nbsp;ADD r1, r1, #1 <br />
+                &nbsp; &nbsp;CMP r1, #20 <br />
+                &nbsp; &nbsp;BNE etiqueta_bucle <br />
             </div>
+        </div>
+        <!-- Table with Registers r0-r7 -->
+        <div class ="col-sm-2">
+            <table border="1" style="width: 100%">
+                <tr><th>Register</th><th>Value</th></tr>
+                <tr>
+                    <td>
+                        R0
+                    </td>
+                    <td id="r0">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R1
+                    </td>
+                    <td id="r1">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R2
+                    </td>
+                    <td id="r2">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R3
+                    </td>
+                    <td id="r3">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R4
+                    </td>
+                    <td id="r4">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R5
+                    </td>
+                    <td id="r5">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R6
+                    </td>
+                    <td id="r6">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R7
+                    </td>
+                    <td id="r7">
+                        0
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- Table with Registers r8-pc-->
+        <div class ="col-sm-2">
+            <table border="1" style="width: 100%">
+                <tr><th>Register</th><th>Value</th></tr>
+                <tr>
+                    <td>
+                        R8
+                    </td>
+                    <td id="r8">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R9
+                    </td>
+                    <td id="r9">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R10
+                    </td>
+                    <td id="r10">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R11
+                    </td>
+                    <td id="r11">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        R12
+                    </td>
+                    <td id="r12">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SP
+                    </td>
+                    <td id="sp">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        LR
+                    </td>
+                    <td id="lr">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PC
+                    </td>
+                    <td id="pc">
+                        0x0
+                    </td>
+                </tr>
 
+            </table>
+        </div>
+
+        <div class="col-sm-offset-7 col-sm-4">
+            <table border="1" style="width: 100%">
+                <tr><th colspan="8">Conditions Flags</th></tr>
+                <tr><td>N</td><td id="N">0</td><td>Z</td><td id="Z">0</td><td>C</td><td id="C">0</td><td>V</td><td id="V">0</td></tr>
+            </table>
         </div>
     </div>
-
     <!-- Scripts -->
     <script src="resources/plugins/jquery/jquery-3.1.1.min.js"></script>
     <script src="resources/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="resources/plugins/multithread/multithread.js"></script>
     <script src="./js/interpreter-assembly.js"></script>
     <script src="./js/parser-assembly.js"></script>
     <script src="./js/simulate-assembly.js"></script>
