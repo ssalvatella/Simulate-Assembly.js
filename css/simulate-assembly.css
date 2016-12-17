@@ -46,6 +46,19 @@ th, td {
     color: #0a0;
 }
 
+.steps {
+    color: #ff5;
+}
+
+.pause {
+    color: #ff5;
+}
+
+.stop {
+    color: #b00;
+}
+
+
 .not_clickable {
     cursor: no-drop;
     color: #b00;

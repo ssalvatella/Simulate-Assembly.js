@@ -41,7 +41,7 @@ function TokenStream(input) {
         croak : input.croak
     };
     function is_label(x) {
-        return /[a-z_]+:/i.test(x);
+        return /[a-z_.]+:/i.test(x);
     }
     function is_keyword(x) {
         return keywords.indexOf(" " + x + " ") >= 0;
@@ -56,7 +56,7 @@ function TokenStream(input) {
         return /[0-9]|#/i.test(ch);
     }
     function is_id_start(ch) {
-        return /[a-z_:]/i.test(ch);
+        return /[a-z_:.]/i.test(ch);
     }
     function is_id(ch) {
         return is_id_start(ch) || "?!-<>=0123456789".indexOf(ch) >= 0;
@@ -135,7 +135,7 @@ function TokenStream(input) {
         read_while(is_whitespace);
         if (input.eof()) return null;
         var ch = input.peek();
-        if (ch == "/") {
+        if (ch == ";" || ch == "/") {
             skip_comment();
             return read_next();
         }

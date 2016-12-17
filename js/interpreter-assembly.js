@@ -31,22 +31,77 @@ var currentLine = 0;
 
 var labels = [];
 
+var isPaused;
+var isRunning;
+
+var mainInterval;
+var stepInterval;
+
 function interpreter(prog) {
     initialize();
+    isRunning = true;
     var instructions = prog.prog;
-    for (currentToken = 0; currentToken < instructions.length; currentToken++) {
-        if (instructions[currentToken].type == "lab") {
-            labels.push({name: instructions[currentToken].value, line: currentLine, tocken: currentToken});
-        } else {
-            window[instructions[currentToken].value](instructions);
+    mainInterval = setInterval(function(){ if (currentToken < instructions.length) {
+        if (!isPaused) {
+            executeStep(instructions);
+            currentToken++;
         }
-        pc = currentLine * 4
-        currentLine++;
-        refreshRegisters();
+    } else {
+        clearInterval(mainInterval);
+        editor.gotoLine(currentLine + 1);
+        isRunning = false;
+        disablePauseButton();
+        disableStopButton();
+    } }, 1);
+}
+
+function interpreterStepToStep(prog) {
+    initialize();
+    var instructions = prog.prog;
+    isRunning = true;
+    stepInterval = setInterval(function(){ if (currentToken < instructions.length) {
+        if (!isPaused) {
+            executeStep(instructions);
+            editor.gotoLine(currentLine + 1);
+            currentToken++;
+        }
+    } else {
+        clearInterval(stepInterval);
+        isRunning = false;
+        disablePauseButton();
+        disableStopButton();
+    } }, 500);
+}
+
+function executeStep(instructions) {
+    if (instructions[currentToken].type == "lab") {
+        labels.push({name: instructions[currentToken].value, line: currentLine, tocken: currentToken});
+    } else {
+        window[instructions[currentToken].value](instructions);
     }
+    pc = currentLine * 4
+    currentLine++;
+    refreshRegisters();
+}
+
+function stopAndRestart() {
+
+    clearInterval(mainInterval);
+    clearInterval(stepInterval);
+    initialize();
+    refreshRegisters();
+    disablePauseButton();
+
 }
 
 function initialize() {
+
+    isRunning = false;
+    isPaused = false;
+
+    currentToken = 0;
+    currentLine = 0;
+
     r0 = 0;
     r1 = 0;
     r2 = 0;
